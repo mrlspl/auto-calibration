@@ -12,7 +12,7 @@ SAMPLE_SIZE = 7;
 sampleCheck = zeros(SAMPLE_SIZE, 1);
 intersections = [];
 
-for sample = 7%1:SAMPLE_SIZE
+for sample = 1:SAMPLE_SIZE
     %% Loading Image Sample
     img  = load([name '_' num2str(sample-1) '.image']);
     img = reshape(img, [3 320 240]);
