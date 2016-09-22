@@ -29,8 +29,8 @@ function robot = initalRobot()
 
     % Camera Positions
     rot_cam = [1   0   0;
-               0  -1   0;
-               0   0  -1];
+               0   0   1;
+               0  -1  0];
     robot.posi_bCam_HP_HP = [17.74; 50.71; 0];
     robot.ori_bCam_HP = Rot_z(0.6929) * rot_cam;
     robot.posi_tCam_HP_HP = [63.64; 58.71; 0];
