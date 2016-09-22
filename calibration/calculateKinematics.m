@@ -31,7 +31,7 @@ jointOffset = robot.leftLegJointOffset;
 calibration = [0; robot.calibrationOffsets(1:6)];
 encoder = [0; robot.encoderData(1:6)];
 
-posiL_torso_origin_origin = robot.posi_leftLeg_origin_origin + robot.ori_leftLeg_origin * (posi_link_base_base(6) + ori_link_base(6) * robot.posi_torso_LHYP_LHYP)
+posiL_torso_origin_origin = robot.posi_leftLeg_origin_origin + robot.ori_leftLeg_origin * (posi_link_base_base(6) + ori_link_base(6) * robot.posi_torso_LHYP_LHYP);
 oriL_torso_origin = robot.ori_leftLeg_origin * ori_link_base(6) * robot.ori_torso_LHYP;
 jacoL_torso_origin = jacobi_rotation(robot.ori_leftLeg_origin, 4) * [jacobian(posi_bCam_torso_torso); jacobian(posi_tCam_torso_torso)];
 
@@ -43,7 +43,7 @@ jointOffset = robot.rightLegJointOffset;
 calibration = [0; robot.calibrationOffsets(7:12)];
 encoder = [0; robot.encoderData(7:12)];
 
-posiR_torso_origin_origin = robot.posi_rightLeg_origin_origin + robot.ori_rightLeg_origin * (posi_link_base_base(6) + ori_link_base(6) * robot.posi_torso_RHYP_RHYP)
+posiR_torso_origin_origin = robot.posi_rightLeg_origin_origin + robot.ori_rightLeg_origin * (posi_link_base_base(6) + ori_link_base(6) * robot.posi_torso_RHYP_RHYP);
 oriR_torso_origin = robot.ori_rightLeg_origin * ori_link_base(6) * robot.ori_torso_RHYP;
 jacoR_torso_origin = jacobi_rotation(robot.ori_rightLeg_origin, 4) * [jacobian(posi_bCam_torso_torso); jacobian(posi_tCam_torso_torso)];
 
