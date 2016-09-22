@@ -2,6 +2,7 @@ clc
 clear
 close all
 
+addpath('calibration/', 'chess/');
 global robot INTER_REF dataSet z joints intersections itrF
 
 %% Pre-Loading Image Processing
