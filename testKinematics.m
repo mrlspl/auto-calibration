@@ -32,3 +32,7 @@ ori_bCam = [data(1:3)' data(4:6)' data(7:9)']
 ori_bCam_origin
 posi_bCam = data(10:12)'
 posi_bCam_origin
+
+%% Unproject;
+[J_cs_js, ori_bCam_origin, ori_tCam_origin, posi_bCam_origin, posi_tCam_origin] = Jacobian_inCameraSpace_fromJointSpace(robot);
+[J_fs_cs, points] = Jacobian_inFieldSpace_fromCameraSpace(posi_bCam_origin, ori_bCam_origin, [241.9260  122.3953]')

@@ -62,7 +62,7 @@ z = size(dataSet, 1);
 joints = zeros(23, z);
 testX = cell(1, z);
 for i=1:z
-    l = load([name '_' num2str(dataSet(i)) '.joint']);
+    l = load([name '_' num2str(dataSet(i) - 1) '.joint']);
     joints(:, i) = l(1:23);
     testX{i} = l(24:end);
 end

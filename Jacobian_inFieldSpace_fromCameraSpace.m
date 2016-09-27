@@ -8,7 +8,7 @@ function [Jacobian Point_fieldSpace] = Jacobian_inFieldSpace_fromCameraSpace(m_p
     end
     
     if (min(size(opticalCenter)) == 0)
-        opticalCenter = [320; 240];
+        opticalCenter = [160; 120];
     end
     
     r = m_pos;
