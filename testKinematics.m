@@ -3,7 +3,7 @@ clear all
 close all
 
 addpath('calibration/', 'chess/');
-global robot INTER_REF dataSet z joints intersections itrF
+global robot z joints
 
 %% Initialization
 name = './samples/calibration_1253146175';
@@ -19,7 +19,7 @@ robot.encoderData = [joints(16:-1:11, 1); joints(22:-1:17, 1); joints(1:2, 1)];
 %-- This part below is duo to difference between NAOqi and B-Human
 %   Joint space in kinematics design.
 robot.encoderData(1) = -robot.encoderData(1); % LAR
-robot.encoderData(5) = -robot.encoderData(5); % LHR
+robot.encoderData(5) = -robori_torso_originot.encoderData(5); % LHR
 robot.encoderData(6) = -robot.encoderData(6); % LHYP
 robot.encoderData(14) = -robot.encoderData(14); % Head Pitch
 
@@ -28,11 +28,11 @@ robot.encoderData(14) = -robot.encoderData(14); % Head Pitch
 
 %% Load B-Human data
 data = load([name '_' num2str(0) '.camera']);
-ori_bCam = [data(1:3)' data(4:6)' data(7:9)']
-ori_bCam_origin
-posi_bCam = data(10:12)'
-posi_bCam_origin
+ori_bCam = [data(1:3)' data(4:6)' data(7:9)'];
+ori_bCam_origin;
+posi_bCam = data(10:12)';
+posi_bCam_origin;
 
 %% Unproject;
 [J_cs_js, ori_bCam_origin, ori_tCam_origin, posi_bCam_origin, posi_tCam_origin] = Jacobian_inCameraSpace_fromJointSpace(robot);
-[J_fs_cs, points] = Jacobian_inFieldSpace_fromCameraSpace(posi_bCam_origin, ori_bCam_origin, [241.9260  122.3953]')
+[J_fs_cs, points] = Jacobian_inFieldSpace_fromCameraSpace(posi_bCam_origin, ori_bCam_origin, [241.9260  122.3953]');

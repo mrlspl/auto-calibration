@@ -4,17 +4,18 @@ function [Jacobian Point_fieldSpace] = Jacobian_inFieldSpace_fromCameraSpace(m_p
     if (min(size(focalLength)) == 0 || focalLength < 0)
         %-- f = width / (2* tan(Optical_Angle_Width / 2) )
         %-- Optical_Angle_Width = 60.97 degree (according to NAO documentation)
-        focalLength = 320 / (2 * tan(1.0641 / 2));
+        focalLength = 640 / (2 * tan(1.0641 / 2));
     end
     
     if (min(size(opticalCenter)) == 0)
-        opticalCenter = [160; 120];
+        opticalCenter = [320; 240];
     end
     
     r = m_pos;
     
     %-- Center Vector in Camera Coordination
     cc = [1; (1/focalLength) * (opticalCenter - point)];
+    cc(2) = cc(2) * -1;
     
     %-- Center Vector in World Coordination
     cw = m_rot * cc;

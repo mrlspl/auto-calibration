@@ -38,15 +38,15 @@ for sample = 1:SAMPLE_SIZE
         intersections = [intersections; intersection];
         sampleCheck(sample) = 1;
     end
-        figure(sample);
-        pause(0.01); %-- In order to ignore confusion of figures
-        imshow(img);
-        hold on
-        plot(intersection(:, 1), intersection(:, 2), 'yx', 'MarkerSize', 12);
-        for k=1:size(intersection, 1)
-            text(intersection(k, 1), intersection(k, 2), ['\leftarrow' num2str(k)]);
-        end
-        pause(0.01); %-- In order to ignore confusion of figures
+%         figure(sample);
+%         pause(0.01); %-- In order to ignore confusion of figures
+%         imshow(img);
+%         hold on
+%         plot(intersection(:, 1), intersection(:, 2), 'yx', 'MarkerSize', 12);
+%         for k=1:size(intersection, 1)
+%             text(intersection(k, 1), intersection(k, 2), ['\leftarrow' num2str(k)]);
+%         end
+%         pause(0.01); %-- In order to ignore confusion of figures
 %     end
 end
 clear img intersection sample

@@ -49,7 +49,7 @@ jacoR_torso_origin = jacobi_rotation(robot.ori_rightLeg_origin, 4) * [jacobian(p
 
 %% Origin to Torso Average
 posi_torso_origin_origin = (posiL_torso_origin_origin + posiR_torso_origin_origin) / 2;
-ori_torso_origin = (oriL_torso_origin + oriR_torso_origin) / 2
+ori_torso_origin = (oriL_torso_origin + oriR_torso_origin) / 2;
 jaco_torso_origin = [jacoL_torso_origin, jacoR_torso_origin] / 2;
 
 
