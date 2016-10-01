@@ -14,14 +14,14 @@ function [Jacobian Point_fieldSpace] = Jacobian_inFieldSpace_fromCameraSpace(m_p
     r = m_pos;
     
     %-- Center Vector in Camera Coordination
-    cc = [1; (1/focalLength) * (opticalCenter - point)];
+    cc = [focalLength; opticalCenter - point];
     cc(2) = cc(2) * -1;
     
     %-- Center Vector in World Coordination
     cw = m_rot * cc;
     
     %-- Calculate P_FS
-    Point_fieldSpace = [r(1) - r(3) * (cw(1) / cw(3)); r(2) - r(3) * (cw(2) / cw(3))];
+    Point_fieldSpace = r(1:2) - cw(1:2) * r(3) / cw(3);%[r(1) - r(3) * (cw(1) / cw(3)); r(2) - r(3) * (cw(2) / cw(3))];
     
     
     %-- Calculation of Derivatives

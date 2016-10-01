@@ -67,6 +67,8 @@ function [F, J] = fitnessFunction(x)
     end
     global itrF 
     
+%     J = J(:, 1:17);
+    
     itrF = itrF + 1;
     disp(['Iteration  :: (' num2str(itrF) ')']);
     disp(['Jacobs Rank : ' num2str(rank(J))]);

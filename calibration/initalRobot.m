@@ -22,15 +22,18 @@ function robot = initalRobot()
     robot.posi_torso_RHYP_RHYP = robot.ori_torso_RHYP * [0; 50; 85];
 
     % Head Kinematic Parameters - Proximal DH Table
-    robot.headLinkTwist = [0; pi/2]; % rad
+    robot.headLinkTwist = [0; -pi/2]; % rad
     robot.headLinkLength = [0; 0; 0]; % mm
     robot.headLinkOffset = [0; 211.5; 0];
     robot.headJointOffset = [0; 0; -pi/2];
 
     % Camera Positions
-    rot_cam = [1   0   0;
-               0   0   1;
-               0  -1  0];
+    rot_cam = [0  0  1;
+               1  0  0;
+               0  1  0];
+%     rot_cam = [ 0  0  1;
+%                -1  0  0;
+%                 0  -1  0];
     robot.posi_bCam_HP_HP = [17.74; 50.71; 0];
     robot.ori_bCam_HP = Rot_z(0.6929) * rot_cam;
     robot.posi_tCam_HP_HP = [63.64; 58.71; 0];

@@ -48,9 +48,9 @@ oriR_torso_origin = robot.ori_rightLeg_origin * ori_link_base(6) * robot.ori_tor
 jacoR_torso_origin = jacobi_rotation(robot.ori_rightLeg_origin, 4) * [jacobian(posi_bCam_torso_torso); jacobian(posi_tCam_torso_torso)];
 
 %% Origin to Torso Average
-posi_torso_origin_origin = (posiL_torso_origin_origin + posiR_torso_origin_origin) / 2;
-ori_torso_origin = (oriL_torso_origin + oriR_torso_origin) / 2;
-jaco_torso_origin = [jacoL_torso_origin, jacoR_torso_origin] / 2;
+posi_torso_origin_origin = posiL_torso_origin_origin;%(posiL_torso_origin_origin + posiR_torso_origin_origin) / 2;
+ori_torso_origin = oriL_torso_origin;%(oriL_torso_origin + oriR_torso_origin) / 2;
+jaco_torso_origin = [jacoL_torso_origin, zeros(size(jacoR_torso_origin))];%[jacoL_torso_origin, jacoR_torso_origin] / 2;
 
 
 %% Origin to Head Pitch
@@ -60,14 +60,14 @@ jaco_head_origin = jacobi_rotation(ori_torso_origin, 4) * jaco_head_torso;
 
 %% Origin to Cameras
 posi_bCam_origin = posi_head_origin_origin + ori_head_origin * robot.posi_bCam_HP_HP;
-ori_bCam_origin = ori_head_origin * robot.ori_bCam_HP;
+ori_bCam_origin = ori_head_origin * robot.ori_bCam_HP * Rot_z(robot.calibrationOffsets(15)) * Rot_y(robot.calibrationOffsets(16)) * Rot_x(robot.calibrationOffsets(17));
 jaco_bCam_origin = jacobi_rotation(ori_bCam_origin, 4) * [zeros(3); eye(3); zeros(6, 3)];
 
 posi_tCam_origin = posi_head_origin_origin + ori_head_origin * robot.posi_tCam_HP_HP;
-ori_tCam_origin = ori_head_origin * robot.ori_tCam_HP;
+ori_tCam_origin = ori_head_origin * robot.ori_tCam_HP * Rot_z(robot.calibrationOffsets(18)) * Rot_y(robot.calibrationOffsets(19)) * Rot_x(robot.calibrationOffsets(20));
 jaco_tCam_origin = jacobi_rotation(ori_tCam_origin, 4) * [zeros(9, 3); eye(3)];
 
 %% Merged Jacobian
-mergedJacobian = [jaco_torso_origin, jaco_head_torso, jaco_bCam_origin, jaco_tCam_origin];
+mergedJacobian = [jaco_torso_origin, jaco_head_origin, jaco_bCam_origin, jaco_tCam_origin];
 
 end
