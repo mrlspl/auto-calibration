@@ -24,7 +24,7 @@ function robot = initalRobot()
     % Head Kinematic Parameters - Proximal DH Table
     robot.headLinkTwist = [0; -pi/2]; % rad
     robot.headLinkLength = [0; 0; 0]; % mm
-    robot.headLinkOffset = [0; 211.5; 0];
+    robot.headLinkOffset = [0; 126.5; 0];
     robot.headJointOffset = [0; 0; -pi/2];
 
     % Camera Positions

@@ -1,0 +1,9 @@
+% the image size for this sample is: (320x240)
+% the image format for this sample is: (Y, Cb, Cr)
+% y = ax + b => the data has written in this format: a, b, confidence
+-0.408, 142, 49
+-0.231, 128, 48
+-0.078, 112, 50
+1.144, 155, 102
+1.136, 135, 104
+1.164, 179, 111

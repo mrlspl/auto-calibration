@@ -52,8 +52,9 @@ function [F, J] = fitnessFunction(x)
             Ji = J_fs_cs * J_cs_js;
             J(ith:ith+1, :) = Ji;
             
-            if (i == 1) %-- Draw the data
-                figure(1);
+%             if (i == 1) %-- Draw the data
+                figure(20);
+                subplot(3, 3, i);
                 hold on;                
                 plot(points(2), points(1), 'r*');
                 plot(INTER_REF(j, 2), INTER_REF(j, 1), 'b*');
@@ -62,7 +63,7 @@ function [F, J] = fitnessFunction(x)
                 
                 text(points(2), points(1), ['\leftarrow' num2str(j)]);
 % %                 axis([0 +1000 -10 2000]);
-            end
+%             end
         end
     end
     global itrF 

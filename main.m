@@ -1,5 +1,5 @@
 clc
-clear
+clear all
 close all
 
 addpath('calibration/', 'chess/');
@@ -8,6 +8,7 @@ global robot INTER_REF dataSet z joints intersections itrF
 %% Pre-Loading Image Processing
 % name = './samples/calibration_1253147384';
 name = './samples/calibration_1253146175';
+% name = './samples/calibration_1476002609';
 SAMPLE_SIZE = 7;
 sampleCheck = zeros(SAMPLE_SIZE, 1);
 intersections = [];
@@ -38,21 +39,24 @@ for sample = 1:SAMPLE_SIZE
         intersections = [intersections; intersection];
         sampleCheck(sample) = 1;
     end
-        figure(sample);
-        pause(0.01); %-- In order to ignore confusion of figures
-        imshow(img);
-        hold on
-        plot(intersection(:, 1), intersection(:, 2), 'yx', 'MarkerSize', 12);
-        for k=1:size(intersection, 1)
-            text(intersection(k, 1), intersection(k, 2), ['\leftarrow' num2str(k)]);
-        end
-        pause(0.01); %-- In order to ignore confusion of figures
+    
+%     if sample == 1
+%         figure(sample + 10);
+%         pause(0.01); %-- In order to ignore confusion of figures
+%         imshow(img);
+%         hold on
+%         plot(intersection(:, 1), intersection(:, 2), 'yx', 'MarkerSize', 12);
+%         for k=1:size(intersection, 1)
+%             text(intersection(k, 1), intersection(k, 2), ['\leftarrow' num2str(k)]);
+%         end
+%         pause(0.01); %-- In order to ignore confusion of figures
+%     end
 end
 clear img intersection sample
 
 %% Initialization
 robot = initalRobot();
-INTER_REF = [700 -100; 600 -100; 500 -100; 700 0; 600 0; 500 0; 700 +100; 600 +100; 500 +100];
+INTER_REF = [700 100; 600 100; 500 100; 700 0; 600 0; 500 0; 700 -100; 600 -100; 500 -100];
 
 %% Load Joint Data
 global testX

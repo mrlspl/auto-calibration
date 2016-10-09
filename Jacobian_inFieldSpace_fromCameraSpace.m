@@ -15,7 +15,7 @@ function [Jacobian Point_fieldSpace] = Jacobian_inFieldSpace_fromCameraSpace(m_p
     
     %-- Center Vector in Camera Coordination
     cc = [focalLength; opticalCenter - point];
-    cc(2) = cc(2) * -1;
+%     cc(2:3) = cc(2:3) * -1;
     
     %-- Center Vector in World Coordination
     cw = m_rot * cc;
